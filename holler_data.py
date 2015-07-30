@@ -3,9 +3,10 @@ from flask import request
 import pickle
 
 app = Flask("Cats Against Catcalling")
+data_file = "holler.dat"
 
 class Catcall:
-    """Class to define objecy containing location and timestamp of the catcall that was recorded"""
+    """Class to define object containing location and timestamp of the catcall that was recorded"""
     def __init__(self, latitude, longitude, date, time):
         self.latitude = latitude
         self.longitude = longitude
@@ -45,15 +46,41 @@ def save_data():
     time = request.args.get('time')
 
     catcall = Catcall(latitude, longitude, date, time)
+    
+    """#TESTING -- ADDING EMPTY ARRAY DELETE THIS AFTERWARDS
 
-    with open('holler_data.pk1', 'wb') as output: #save data
-        pickle.dump(catcall, output, pickle.HIGHEST_PROTOCOL)
+    #---------------------------------------------------------
+
+    with open(data_file, 'wb') as output: #save data
+        pickle.dump([], output, pickle.HIGHEST_PROTOCOL)
+
+    #---------------------------------------------------------
+    """
+
+    catcallList = []
+
+    with open(data_file, 'rb') as input:
+        for item in range(pickle.load(input)):
+            catcallList.append(pickle.load(input))
+        #catcallList = pickle.load(input)  #retrieve
+
+
+    #add most recent catcall to file
+    catcallList.append(catcall)
+
+    with open(data_file, 'wb') as output: #save data
+        pickle.dump(len(catcallList), output)
+        for item in catcallList:
+            pickle.dump(item, output)
+        #pickle.dump(catcallList, output, pickle.HIGHEST_PROTOCOL)
 
     del catcall
 
-    with open('holler_data.pk1', 'rb') as input:
-        catcall = pickle.load(input)
-        return catcall.latitude #retrieve and print data
+    returnText = ""
+    for holler in catcallList:
+        returnText = returnText + "\n" + holler.print_data()
+
+    return returnText
     
     #return catcall.print_data();
 
