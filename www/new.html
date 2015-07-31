@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Hollerr</title>
+
+    <!-- Sets initial viewport load and disables zooming  -->
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+
+    <!-- Makes your prototype chrome-less once bookmarked to your phone's home screen -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <!-- Include the compiled Ratchet CSS -->
+    <link href="css/ratchet.css" rel="stylesheet">
+
+    <!-- Include the compiled Ratchet JS -->
+    <script src="js/ratchet.js"></script>
+      
+    <script type="text/javascript">
+        
+        //when capture operation is finished
+        function captureSuccess(mediaFiles) {
+        var i, len;
+        for (i = 0, len = mediaFiles.length; i < len; i += 1) {
+            uploadFile(mediaFiles[i]);}
+        }
+        
+        //if an error occurs
+        function captureError(error) {
+        var msg = 'An error occurred during capture: ' + error.code;
+        navigator.notification.alert(msg, null, 'Uh oh!');
+        }
+        
+        //button to call function
+        function captureAudio() {
+        // Launch device audio recording application,
+        // allowing user to capture up to 2 audio clips
+            
+        /*var seconds_left = 30
+        var interval = setInterval(function() {
+            document.getElementById("timer").innerHTML = --seconds_left;
+            
+            if (seconds_left <=0){
+                document.getElementById('geolocation').style.display = 'none';
+                document.getElementById('timer').innerHTML = "Saved to PINPOINTED & RECORDED.";
+                clearInterval(interval);
+            }
+            document.getElementById('geolocation').style.display = 'block';
+        }, 1000); */
+        
+        
+            
+            
+            //-----save location to the map-----
+        
+            
+        navigator.device.capture.captureAudio(captureSuccess, captureError, {limit: 2});
+        }
+        
+        //save file to server
+        function uploadFile(mediaFile) {
+        var ft = new FileTransfer(),
+            path = mediaFile.fullPath,
+            name = mediaFile.name;
+
+        ft.upload(path,
+            "http://my.domain.com/upload.php",
+            function(result) {
+                console.log('Upload success: ' + result.responseCode);
+                console.log(result.bytesSent + ' bytes sent');
+            },
+            function(error) {
+                console.log('Error uploading file ' + path + ': ' + error.code);
+            },
+            { fileName: name });
+    }
+    
+      
+      
+    </script>
+  </head>
+  <body>
+
+    <!-- Make sure all your bars are the first things in your <body> -->
+    <header class="bar bar-nav">
+      <h1 class="title">NEW INCIDENT</h1>
+    </header>
+      
+    <!--Navigation bar at the bottom of the page-->
+   <nav class="bar bar-tab">
+      <a class="tab-item" href="pinpointed.html">
+        <span class="icon icon-person"></span>
+        <span class="tab-label">Pinpointed</span>
+      </a>
+       <a class="tab-item active" href="new.html">
+        <span class="icon icon-plus"></span>
+        <span class="tab-label">New</span>
+      </a>
+      <a class="tab-item" href="recorded.html">
+        <span class="icon icon-stop"></span>
+        <span class="tab-label">Recorded</span>
+      </a>
+      <a class="tab-item" href="signup.html">
+        <span class="icon icon-gear"></span>
+        <span class="tab-label">Settings</span>
+      </a>
+    </nav>
+
+    <!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
+    <div class="content">    
+        
+        <!-- Button to request SMS about legislation-->
+        <button class="btn btn-negative btn-block" onclick="captureAudio();" style="display:block" id="timer">
+            Record new incident
+        </button>
+        
+        <p id="geolocation" style="display:none">Finding geolocation...</p>
+        
+        
+    </div>
+
+  </body>
+</html>

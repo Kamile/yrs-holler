@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Hollerr</title>
+
+    <!-- Sets initial viewport load and disables zooming  -->
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+
+    <!-- Makes your prototype chrome-less once bookmarked to your phone's home screen -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <!-- Include the compiled Ratchet CSS -->
+    <link href="css/ratchet.css" rel="stylesheet">
+
+    <!-- Include the compiled Ratchet JS -->
+    <script src="js/ratchet.jsr"></script>
+      
+    <!-- Include Google Maps API to display map of recorded catcalls -->
+    <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.1.min.js"></script>
+    
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <script type="text/javascript" charset="utf-8">
+    
+    
+    //getting data from server
+    function fetch_locations() {
+                
+        var location_string = "";
+        
+        //make the request
+        function httpGet(theUrl)
+        {
+            var xmlHttp = new XMLHttpRequest();
+            xmlHttp.open( "GET", theUrl, true );
+            xmlHttp.send( null );
+            return xmlHttp.responseText;
+        }
+        
+        location_string = httpGet('http://kamiliute.pythonanywhere.com/getcalls');
+        
+        //imagine we already have the string
+        
+        var lat_longs = location_string.split(" ");
+        var locations = [];
+        var latitudes = [];
+        var longitudes = [];
+        
+        alert(location_string);
+        
+        
+        for (i=0; i< lat_longs.length; i++){
+            if (i % 2 == 0) {
+                latitudes.append(lat_longs[i]);
+            }
+            else {
+                longitudes.append(lat_longs[i]);
+            }
+            
+        }
+        
+        
+        for (j=0; j < latitudes.length; j++){
+            locations.append(['name', latitudes[j], longitudes[j], j]);
+        }
+        
+        
+    }
+
+    </script>
+      
+      
+        
+  </head>
+  <body onload="fetch_locations();">
+
+    <!-- Make sure all your bars are the first things in your <body> -->
+    <header class="bar bar-nav">
+      <h1 class="title">PINPOINTED</h1>
+    </header>
+      
+     <!--Navigation bar at the bottom of the page-->
+    <nav class="bar bar-tab">
+      <a class="tab-item active" href="pinpointed.html">
+        <span class="icon icon-person"></span>
+        <span class="tab-label">Pinpointed</span>
+      </a>
+        <a class="tab-item" href="new.html">
+        <span class="icon icon-plus"></span>
+        <span class="tab-label">New</span>
+      </a>
+      <a class="tab-item" href="recorded.html">
+        <span class="icon icon-stop"></span>
+        <span class="tab-label">Recorded</span>
+      </a>
+      <a class="tab-item" href="signup.html">
+        <span class="icon icon-gear"></span>
+        <span class="tab-label">Settings</span>
+      </a>
+    </nav>
+
+    <!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
+    <div class="content">
+        
+       
+        <div id="map" style="width: 100%; height: 100%;"></div>
+
+  <script type="text/javascript">
+    var locations = [
+      ['London', 51.5034, -0.1195, 4],
+      ['Birmingham', 52.4831, -1.8936, 5],
+      ['Nazeing', 51.7367, 0.0587, 3],
+      ['Brighton', 50.8429, 0.1313, 2],
+      ['Bristol', 51.4500, -2.5833, 1]
+    ];
+      
+      //separate by space
+      //separate into lan & long arrays by odd and even
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 7,
+      center: new google.maps.LatLng(52.5362, -1.2744),
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+    var infowindow = new google.maps.InfoWindow();
+    var marker, i;
+    var markers = new Array();
+    for (i = 0; i < locations.length; i++) {  
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+        map: map
+      });
+      markers.push(marker);
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent(locations[i][0]);
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+    }
+    function AutoCenter() {
+      var bounds = new google.maps.LatLngBounds();
+      $.each(markers, function (index, marker) {
+      bounds.extend(marker.position);
+      });
+      map.fitBounds(bounds);
+    }
+    AutoCenter();
+  </script> 
+      
+    </div>
+
+  </body>
+</html>
