@@ -17,40 +17,6 @@
     <!-- Include the compiled Ratchet JS -->
     <script src="js/ratchet.js"></script>
       
-    <script type="text/javascript">
-        
-            // Wait for device API libraries to load
-    //
-    document.addEventListener("deviceready", onDeviceReady, false);
-
-    // device APIs are available
-    //
-    function onDeviceReady() {
-        navigator.geolocation.getCurrentPosition(onSuccess, onError);
-    }
-
-    // onSuccess Geolocation
-    //
-    function onSuccess(position) {
-        var element = document.getElementById('geolocation');
-        element.innerHTML = 'Latitude: '           + position.coords.latitude              + '<br />' +
-                            'Longitude: '          + position.coords.longitude               + '<br />' +
-                            'Timestamp: '          + position.timestamp                    + '<br />';
-    }
-
-    // onError Callback receives a PositionError object
-    //
-    function onError(error) {
-        alert('code: '    + error.code    + '\n' +
-              'message: ' + error.message + '\n');
-    }
-        
-      
-      
-      
-      
-    </script>
-      
     
   </head>
   <body>
@@ -69,14 +35,6 @@
        <a class="tab-item" href="new.html">
         <span class="icon icon-plus"></span>
         <span class="tab-label">New</span>
-      </a>
-      <a class="tab-item active" href="recorded.html">
-        <span class="icon icon-stop"></span>
-        <span class="tab-label">Recorded</span>
-      </a>
-      <a class="tab-item" href="signup.html">
-        <span class="icon icon-gear"></span>
-        <span class="tab-label">Settings</span>
       </a>
     </nav>
 

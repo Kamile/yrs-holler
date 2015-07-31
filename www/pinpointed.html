@@ -48,7 +48,7 @@
         var latitudes = [];
         var longitudes = [];
         
-        alert(location_string);
+        //alert(location_string);
         
         
         for (i=0; i< lat_longs.length; i++){
@@ -65,7 +65,7 @@
         for (j=0; j < latitudes.length; j++){
             locations.append(['name', latitudes[j], longitudes[j], j]);
         }
-        
+        return locations;
         
     }
 
@@ -91,14 +91,7 @@
         <span class="icon icon-plus"></span>
         <span class="tab-label">New</span>
       </a>
-      <a class="tab-item" href="recorded.html">
-        <span class="icon icon-stop"></span>
-        <span class="tab-label">Recorded</span>
-      </a>
-      <a class="tab-item" href="signup.html">
-        <span class="icon icon-gear"></span>
-        <span class="tab-label">Settings</span>
-      </a>
+      
     </nav>
 
     <!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
