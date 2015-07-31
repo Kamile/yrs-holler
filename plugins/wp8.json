@@ -31,6 +31,10 @@
                         {
                             "xml": "<Capability Name=\"ID_CAP_ISV_CAMERA\" />",
                             "count": 1
+                        },
+                        {
+                            "xml": "<Capability Name=\"ID_CAP_SENSORS\" />",
+                            "count": 2
                         }
                     ]
                 }
@@ -44,6 +48,14 @@
                         },
                         {
                             "xml": "<feature name=\"Capture\"><param name=\"wp-package\" value=\"Capture\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Accelerometer\"><param name=\"wp-package\" value=\"Accelerometer\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Compass\"><param name=\"wp-package\" value=\"Compass\" /></feature>",
                             "count": 1
                         }
                     ]
@@ -59,6 +71,12 @@
             "PACKAGE_NAME": "{75ee7ae0-36d7-11e5-8eeb-9b7f57a58089}"
         },
         "org.apache.cordova.media-capture": {
+            "PACKAGE_NAME": "{75ee7ae0-36d7-11e5-8eeb-9b7f57a58089}"
+        },
+        "cordova-plugin-device-motion": {
+            "PACKAGE_NAME": "{75ee7ae0-36d7-11e5-8eeb-9b7f57a58089}"
+        },
+        "cordova-plugin-device-orientation": {
             "PACKAGE_NAME": "{75ee7ae0-36d7-11e5-8eeb-9b7f57a58089}"
         }
     },

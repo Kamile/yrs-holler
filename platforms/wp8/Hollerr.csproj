@@ -252,4 +252,10 @@
             <DependentUpon>VideoRecorder.xaml</DependentUpon>
         </Compile>
     </ItemGroup>
+    <ItemGroup>
+        <Compile Include="Plugins\cordova-plugin-device-motion\Accelerometer.cs" />
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Include="Plugins\cordova-plugin-device-orientation\Compass.cs" />
+    </ItemGroup>
 </Project>

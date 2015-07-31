@@ -46,6 +46,9 @@
 		8807A3118EBE47F0BB59D464 /* CDVAssetLibraryFilesystem.m in Sources */ = {isa = PBXBuildFile; fileRef = A4939177A80C43D1ACC04ADF /* CDVAssetLibraryFilesystem.m */; };
 		23A501FEAAB6423AA3B8F44B /* CDVCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = 613FA5A6E00E44BCAB3CB10E /* CDVCapture.m */; };
 		2413BEB77F4C49F393876A91 /* CDVCapture.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3849CF17C73145B989FEDF38 /* CDVCapture.bundle */; };
+		7FE8A838ECC54F4A82B768C9 /* CDVAccelerometer.m in Sources */ = {isa = PBXBuildFile; fileRef = FDA61130B9654A9CAB88BBD2 /* CDVAccelerometer.m */; };
+		BFEE81CE396947F4BDADB5BF /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FF3BAC936FE4685BE17AF05 /* CoreMotion.framework */; };
+		E1EC50749A7A43668E12F600 /* CDVCompass.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F2EA47758D4652AD9D27A6 /* CDVCompass.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +126,11 @@
 		613FA5A6E00E44BCAB3CB10E /* CDVCapture.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVCapture.m"; path = "org.apache.cordova.media-capture/CDVCapture.m"; sourceTree = "<group>"; fileEncoding = 4; };
 		CCC9471E404C4101B6CEBB82 /* CDVCapture.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVCapture.h"; path = "org.apache.cordova.media-capture/CDVCapture.h"; sourceTree = "<group>"; fileEncoding = 4; };
 		3849CF17C73145B989FEDF38 /* CDVCapture.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = "CDVCapture.bundle"; path = "Resources\CDVCapture.bundle"; sourceTree = "<group>"; };
+		FDA61130B9654A9CAB88BBD2 /* CDVAccelerometer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVAccelerometer.m"; path = "cordova-plugin-device-motion/CDVAccelerometer.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		128F0F15FA5D4FBAAC733F14 /* CDVAccelerometer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVAccelerometer.h"; path = "cordova-plugin-device-motion/CDVAccelerometer.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		7FF3BAC936FE4685BE17AF05 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "CoreMotion.framework"; path = "System/Library/Frameworks/CoreMotion.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
+		B7F2EA47758D4652AD9D27A6 /* CDVCompass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVCompass.m"; path = "cordova-plugin-device-orientation/CDVCompass.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		5AA39F7DBE8E44DD8D364AF6 /* CDVCompass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVCompass.h"; path = "cordova-plugin-device-orientation/CDVCompass.h"; sourceTree = "<group>"; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +143,7 @@
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
 				305D5FD1115AB8F900A74A75 /* MobileCoreServices.framework in Frameworks */,
 				6D27B28580314DAB933FD345 /* CoreLocation.framework in Frameworks */,
+				BFEE81CE396947F4BDADB5BF /* CoreMotion.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,6 +218,7 @@
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
 				305D5FD0115AB8F900A74A75 /* MobileCoreServices.framework */,
 				99EE9123AD5E4C218FF119A3 /* CoreLocation.framework */,
+				7FF3BAC936FE4685BE17AF05 /* CoreMotion.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -234,6 +244,10 @@
 				22B466BBAA09463F8F1B0B3F /* CDVAssetLibraryFilesystem.h */,
 				613FA5A6E00E44BCAB3CB10E /* CDVCapture.m */,
 				CCC9471E404C4101B6CEBB82 /* CDVCapture.h */,
+				FDA61130B9654A9CAB88BBD2 /* CDVAccelerometer.m */,
+				128F0F15FA5D4FBAAC733F14 /* CDVAccelerometer.h */,
+				B7F2EA47758D4652AD9D27A6 /* CDVCompass.m */,
+				5AA39F7DBE8E44DD8D364AF6 /* CDVCompass.h */,
 			);
 			name = Plugins;
 			path = "Hollerr/Plugins";
@@ -424,6 +438,8 @@
 				046C834A328B4A0D96D2F0E4 /* CDVLocalFilesystem.m in Sources */,
 				8807A3118EBE47F0BB59D464 /* CDVAssetLibraryFilesystem.m in Sources */,
 				23A501FEAAB6423AA3B8F44B /* CDVCapture.m in Sources */,
+				7FE8A838ECC54F4A82B768C9 /* CDVAccelerometer.m in Sources */,
+				E1EC50749A7A43668E12F600 /* CDVCompass.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,7 +10,7 @@
                     "CoreLocation.framework": [
                         {
                             "xml": false,
-                            "count": 1
+                            "count": 2
                         }
                     ],
                     "AssetsLibrary.framework": [
@@ -26,6 +26,12 @@
                         }
                     ],
                     "CoreGraphics.framework": [
+                        {
+                            "xml": false,
+                            "count": 1
+                        }
+                    ],
+                    "CoreMotion.framework": [
                         {
                             "xml": false,
                             "count": 1
@@ -46,6 +52,14 @@
                         },
                         {
                             "xml": "<feature name=\"Capture\"><param name=\"ios-package\" value=\"CDVCapture\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Accelerometer\"><param name=\"ios-package\" value=\"CDVAccelerometer\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Compass\"><param name=\"ios-package\" value=\"CDVCompass\" /></feature>",
                             "count": 1
                         }
                     ]
@@ -71,6 +85,12 @@
             "PACKAGE_NAME": "com.cats.hollerr"
         },
         "org.apache.cordova.media-capture": {
+            "PACKAGE_NAME": "com.cats.hollerr"
+        },
+        "cordova-plugin-device-motion": {
+            "PACKAGE_NAME": "com.cats.hollerr"
+        },
+        "cordova-plugin-device-orientation": {
             "PACKAGE_NAME": "com.cats.hollerr"
         }
     },
