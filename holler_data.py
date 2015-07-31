@@ -2,16 +2,16 @@ from flask import Flask
 from flask import request
 import pickle
 
-app = Flask("Cats Against Catcalling")
+app = Flask(__name__)
 data_file = "holler.dat"
 
 class Catcall:
     """Class to define object containing location and timestamp of the catcall that was recorded"""
-    def __init__(self, latitude, longitude, date, time):
+    def __init__(self, latitude, longitude):
         self.latitude = latitude
         self.longitude = longitude
-        self.date = date
-        self.time = time
+        #self.date = date
+        #self.time = time
         
         
     
@@ -22,15 +22,14 @@ class Catcall:
     def add_longitude(self, longitude):
         self.longitude = longitude
     
-    def add_date(self, date):
+    """def add_date(self, date):
         self.date = date
         
     def add_time(self, time):
-        self.time = time
+        self.time = time """
 
     def print_data(self):
-        return self.latitude + "\n" + self.longitude + "\n" + self.date + "\n" + self.time
-        
+        return self.latitude + "\n" + self.longitude
 
 
 
@@ -42,10 +41,10 @@ def index():
 def save_data():
     latitude = request.args.get('latitude')
     longitude = request.args.get('longitude')
-    date = request.args.get('date')
-    time = request.args.get('time')
+    #date = request.args.get('date')
+    #time = request.args.get('time')
 
-    catcall = Catcall(latitude, longitude, date, time)
+    catcall = Catcall(latitude, longitude)
     
     """#TESTING -- ADDING EMPTY ARRAY DELETE THIS AFTERWARDS
 
