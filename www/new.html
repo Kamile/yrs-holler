@@ -16,6 +16,7 @@
 
     <!-- Include the compiled Ratchet JS -->
     <script src="js/ratchet.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.1.min.js"></script>
       
     <!-- script to fetch location -->
     <script type="text/javascript">
@@ -33,10 +34,19 @@
     // onSuccess Geolocation
     //
     function onSuccess(position) {
-        var element = document.getElementById('geolocation');
-        element.innerHTML = 'Latitude: '           + position.coords.latitude              + '<br />' +
-                            'Longitude: '          + position.coords.longitude               + '<br />' +
-                            'Timestamp: '          + position.timestamp                    + '<br />';
+        //add position to server
+        var servercall = 'http://kamiliute.pythonanywhere.com/add?latitude=' + String(position.coords.latitude) + '&longitude=' + String(position.coords.longitude);
+        
+        
+        $(document).ready(function(){
+         $.post(servercall, function(data,status){
+             alert("done");
+             
+         });
+     });
+        
+        
+        
     }
 
     // onError Callback receives a PositionError object
@@ -71,20 +81,7 @@
         //button to call function
         function captureAudio() {
         // Launch device audio recording application,
-        // allowing user to capture up to 2 audio clips
-            
-        var seconds_left = 30
-        var interval = setInterval(function() {
-            document.getElementById("timer").innerHTML = --seconds_left;
-            
-            if (seconds_left <=0){
-                document.getElementById('geolocation').style.display = 'none';
-                document.getElementById('timer').innerHTML = "Saved to PINPOINTED & RECORDED.";
-                clearInterval(interval);
-            }
-            document.getElementById('geolocation').style.display = 'block';
-        }, 1000); 
-        
+        // allowing user to capture up to 2 audio clip
         
             
             
